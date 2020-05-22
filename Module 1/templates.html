@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script>
+	<title></title>
+</head>
+
+<div id="app">
+	<!-- v-on is used to detect an event from the DOM. This can be any normal DOM events mouse enter mouse leave, click, etc. -->
+
+	<!-- $event is a protected member that is used to reference the dom alongside another argument. Be sure to not override it. -->
+	<button v-on:click="increase(2, $event)"> Click me </button>
+
+	<button v-on:click="increase(2, $event)"> Click me </button>
+
+	<!-- It is also possible to write javascript straight into the paragraph -->
+	<!-- This is only possible for very simple expressions.  -->
+	<p>{{ counter * 2 > 10 ? 'Greater than 10' : 'Less than 10' }} </p>
+
+	<p v-on:mousemove="updateCoordinates"> 
+		Coordinates: {{ x }} / {{ y }}
+		- <span v-on:mousemove.stop=""> DEAD SPOT </span> 
+	</p>
+
+	<!-- .enter is used to detect the enter key. This is a key modifier / key alerts to detect when a particular key is pressed. -->
+	
+	<input type="text" v-on:keyup.enter="alertMe">
+
+</div>
+
+
+<script>
+
+	new Vue({
+
+		el: '#app',
+
+		data: {
+			counter: 0,
+			x: 0,
+			y: 0, 
+		},
+
+		methods: {
+			increase: function(step, event) {
+				this.counter++
+			},
+
+			updateCoordinates: function(event) {
+				this.x = event.clientX;
+				this.y = event.clientY;
+			},
+
+			alertMe: function() {
+				alert('Alert!')
+			}
+
+			// dummy: function(event) {
+			// 	// Stops the events that are happening into the elements that hold it.
+			// 	//Vuejs makes this easier.
+			// 	event.stopPropegation();
+			// }
+		}
+
+
+	})
+
+</script>
+
+
+
+</html>	

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Computed Values</title>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script>
+
+</head>
+
+<div id='app'>
+
+	<button v-on:click="counter++">Increase</button>
+	<button v-on:click="counter--">Decrease</button>
+	<button v-on:click="secondCounter++"> Increase second </button>
+	<p>Counter: {{ counter }}</p>
+	<p> Result: {{ result() }} | {{ output }}</p>
+
+</div>
+
+
+<script>
+
+	new Vue({
+
+		el: '#app',
+		data: {
+			counter: 0,
+			secondCounter: 0,
+		},
+
+		// This is used to avoid necessary recalculation. Only use a method if you don't want to cache a result.
+		computed : {
+			output: function() {
+				return this.counter > 5 ? '> 5' : '< 5';
+			}
+		},
+
+		//Set up the property name that I want to watch and then tie it to a function.
+		//It is prefered to use computed properties whenever possible.
+		//Watch is best used with asynchronous tasks
+		watch: {
+			counter: function(value) {
+				var vm = this;
+
+				setTimeout(function() {
+					vm.counter = 0;
+
+				}, 2000);
+			}
+		},
+
+		methods: {
+			result: function() {
+				return this.counter > 5 ? 'Greater than 5' : 'Less than 5';
+			}
+		},
+
+	})
+
+
+</script>
+
+
+</html>

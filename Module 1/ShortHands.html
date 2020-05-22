@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+
+<div id="app">
+	
+	<!-- You can replace v-on: with @ -->
+	<button @click="changeLink"> Click to change Link </button>
+	<!-- You can replace v-bind with simply : -->
+	<a :href="link">{{ link }}</a>
+
+
+</div>
+
+
+<script>
+
+	new Vue({
+		el: "#app",
+
+		data: {
+			link: "http://google.ca",
+		},
+
+		methods: {
+			changeLink: function() {
+				this.link = 'http://apple.ca'
+			}
+		}
+
+
+	})
+
+
+</script>
+
+
+</html>

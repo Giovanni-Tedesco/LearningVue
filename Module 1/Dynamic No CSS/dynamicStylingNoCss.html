@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="temp.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script>
+</head>
+
+<div id="app">
+	<div class="demo" :style="{'background-color': color}"></div>
+	<div class="demo" :style="myStyle"></div>
+	<div class="demo"></div>
+	
+	<hr>
+	<input type="text" v-model="color">
+	<input type="text" v-model="width">
+
+
+</div>
+
+<script>
+	new Vue({
+		el: '#app',
+		data: {
+			color: 'grey',
+			width: 100,
+		},
+
+		computed: {
+			myStyle: function() {
+				return {
+					backgroundColor: this.color,
+					width: this.width + 'px'
+				}
+			}
+		}
+	})
+
+</script>
+
+
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+
+	<div id='app'>
+		<input type="text" v-on:input="changeTitle">
+		<p>{{ title }}</p>
+		<ol > </ol>
+
+	</div>
+
+	<script>
+		//Main app object
+		new Vue({
+			// Element that is being controlled
+			el: '#app',
+
+			//Data that will be going into the data
+			data: {
+				title: 'Hello World'
+			},
+
+			methods: {
+				changeTitle: function(event) {
+					this.title = event.target.value;
+				}
+		});
+
+
+	</script>
+
+</html>

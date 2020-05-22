@@ -1,0 +1,54 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+	<head>
+		<title>Templates</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script>
+	</head>
+
+	<div id="app">
+		<!-- {{ x }} syntax can only be used inside of html. Not inside of any attributes -->
+		<!-- Insead you use a directive to do so. v-bind, binds elements from the vuejs instance to the attribute. Here we are binding vue to the href value -->
+
+		<!-- v-bind -> Bind something to my data -->
+		<!-- v-once -> Does not change the value in case it is overwritten at a later time. -->
+
+		<h1 v-once> {{ title }} </h1>
+		<p> {{ sayHello() }} - <a v-bind:href="link">Google</a></p>
+
+		<hr>
+		<!-- Rendering raw HTML -->
+		<!-- In order to do so you use v-html tag -->
+		<p v-html="finishedLink"></p>
+
+
+
+	</div>
+
+
+	<script>
+
+		new Vue({
+			el: '#app',
+
+			data: {
+				title: "Hello World",
+				link: "http://google.ca",
+				finishedLink: '<a href="http://google.ca"> Google </a>',
+			},
+
+			methods: {
+				//Functions that are used in the DOM must return a string.
+				//No complex objects or NULL return values
+				sayHello: function() {
+					//Notice that this.title would normally not be possible
+					this.title = "Hello !"
+					return this.title;
+				}
+			}
+
+		})
+
+	</script>
+
+
+</html>
